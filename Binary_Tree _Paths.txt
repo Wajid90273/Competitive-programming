@@ -12,7 +12,7 @@ public:
         if(root->left==NULL && root->right==NULL){
             v.push_back(s);
         }
-        
+        _path
         
         
         solve(root->left,v,s);
