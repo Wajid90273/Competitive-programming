@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void kpaths(TreeNode* root, int k, unordered_map<int, int>& p,int sum, int &res)
+{
+    if (root)
+    {
+        if (sum + root->val == k)
+            res++;
+         
+        res += p[sum + root->val - k];
+         
+        p[sum + root->val]++;
+ 
+        kpaths(root->left, k, p, sum + root->val, res);
+        kpaths(root->right, k, p, sum + root->val, res);
+         
+        p[sum + root->val]--;
+    }
+}
+int pathSum(TreeNode* root, int k)
+{
+    int res = 0;
+     
+    unordered_map<int, int> p;
+    kpaths(root, k, p, 0, res);
+     
+    return res;
+}
+ 
+};
